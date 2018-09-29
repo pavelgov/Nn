@@ -84,7 +84,7 @@ public abstract class Nn {
     }*/
     private double activation1(double sum) { //
        // return ((Math.pow(Math.E, 2 * sum) - 1) / (Math.pow(Math.E, 2 * sum) + 1));//гиперболич тангенс
-        return  Math.tanh(sum * 1);
+        return  Math.tanh(sum*0.1);
     }
 
     public double[] activation(double[] sum) { //
@@ -101,7 +101,7 @@ public abstract class Nn {
     } */
 
     protected double proizvodnaya(double activatF) { //производная от функции активации
-        return 1*(1 - activatF * activatF);
+        return 0.1*(1 - activatF * activatF);
     }
 
     protected double findWeight(double w1, double d1, double proizv, double x1, double speedLearn) {

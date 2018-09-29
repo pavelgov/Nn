@@ -35,7 +35,8 @@ public class Servlet extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
         resp.addHeader("Access-Control-Allow-Origin", "*");
 
-        enters = normalize(data.getEnters());
+        enters = (data.getEnters());
+
         correctAnswers = normalize(data.getCorrectAnswers(enters));
 
 

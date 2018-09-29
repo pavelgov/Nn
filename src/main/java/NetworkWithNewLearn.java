@@ -10,6 +10,13 @@ public class NetworkWithNewLearn extends Network {
         super(size);
     }
 
+    @Override
+    protected double proizvodnaya(double activatF) {
+        return super.proizvodnaya(activatF * 0.1);
+    }
+
+
+
     public double findDeltaError(double error, double proizvodSigmoid) {
         return error * proizvodSigmoid;
     }
@@ -31,7 +38,7 @@ public class NetworkWithNewLearn extends Network {
         for (int i = 0; i < input.length; i++) {   //в цикле находим правильные веса
             for (int j = 0; j < deltaError.length; j++) {
                 result[wIndex] = findWeight(weight[wIndex], input[i], deltaError[j], SPEEDLEARN);
-                 //todo когда дошли до левого слоя вход 1 нейрон Дельта 3
+                //todo когда дошли до левого слоя вход 1 нейрон Дельта 3
                 wIndex++;
             }
         }
@@ -80,8 +87,8 @@ public class NetworkWithNewLearn extends Network {
         //берем самый крайний правый слой
         layerE[layerEIndex] = findErrorNetwork((double[]) getNet()[getNet().length - 1], correctAnswers); //находим ошибку сети
         layerD[layerDIndex] = findDeltaErrorMas(layerE[layerEIndex], layerF[layerFIndex - 1]);
-        getNet()[(getNet().length-1) - 1] = backPropogation(   //по формуле w1=w1-input * weightDelta * alpha
-                (double[]) getNet()[(getNet().length-1) - 1],  //слой весов
+        getNet()[(getNet().length - 1) - 1] = backPropogation(   //по формуле w1=w1-input * weightDelta * alpha
+                (double[]) getNet()[(getNet().length - 1) - 1],  //слой весов
                 (double[]) getNet()[(getNet().length - 2) - 1],//слой сигмоиды который стоит перед весом, он же inputs
                 layerD[layerDIndex]      // слой ошибки дельты
         );
