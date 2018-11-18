@@ -8,6 +8,7 @@ public class DataImp implements Data {
         for (int i = 0; i < otvetSeti.length; i++) {
             counter += 0.25;
             otvetSeti[i][0] = ((double) Math.round(counter * Math.pow(10, 2)) / Math.pow(10, 2));
+
         }
         return otvetSeti;
     }

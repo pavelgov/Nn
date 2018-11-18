@@ -1,17 +1,16 @@
 function showError() {
 
-    var y = [];
-    var data = [];
-    var dataSeries = {type: "line"};
-    var dataPoints = [];
-    var counter = 0;
-    $.ajaxSetup({
+    var y1 = 0;
+    var data1 = [];
+    var dataSeries1 = {type: "line"};
+    var dataPoints1 = [];
+
+   $.ajaxSetup({
         async: false
     });
 
-    var context;
-    $.ajax({
 
+    $.ajax({
         url: 'http://localhost:8080/hello',
         data: {getErrors:1},
         async: false,
@@ -22,41 +21,42 @@ function showError() {
         }
     });
 
-    function assignVariable(data) {
-        context = data;
+    function assignVariable(data1) {
+        y1 = data1;
     }
 
-    y = context;
-    for (var i = 0; i < y.length; i += 1) {
-        dataPoints.push({
+
+    for (var i = 0; i < y1.length; i += 1) {
+        dataPoints1.push({
             x: i,
-            y: y[i]
+            y: y1[i]
         });
     }
-    dataSeries.dataPoints = dataPoints;
-    data.push(dataSeries);
+    dataSeries1.dataPoints = dataPoints1;
+    data1.push(dataSeries1);
 
-//Better to construct options first and then pass it as a parameter
-    var chart = new CanvasJS.Chart("ErrorNetwork", {
-        animationEnabled: false,
+
+
+
+    var options1 = {
         zoomEnabled: true,
+        animationEnabled: false,
         title: {
-            text: "Размер ошибки сети "
+            text: "График ошибки сети"
         },
         axisY: {
-            includeZero: false
+            includeZero: false,
+            lineThickness: 1
         },
-        data: data  // random generator below
-    });
+        data: data1  // random data
+    };
 
-    chart.render();
-    /* y = [];
-     data = [];
-     dataSeries = {type: "line"};
-     dataPoints = [];
-     counter = 0;
-    context = null;
-    chart = null;*/
+
+
+    var chart1 = new CanvasJS.Chart("ErrorNetwork", options1);
+
+    chart1.render();
+
 }
 
 

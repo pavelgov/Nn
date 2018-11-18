@@ -2,7 +2,7 @@
  * Created by Pavel on 09.03.2018.
  */
 public abstract class Nn {
-    private final double SPEEDLEARN = 0.01;
+    private final double SPEEDLEARN = 1;
 
     public Nn() {
     }
@@ -83,8 +83,9 @@ public abstract class Nn {
 
     }*/
     private double activation1(double sum) { //
-       // return ((Math.pow(Math.E, 2 * sum) - 1) / (Math.pow(Math.E, 2 * sum) + 1));//гиперболич тангенс
-        return  Math.tanh(sum*0.1);
+        return (( Math.pow(Math.E, sum) - Math.pow(Math.E, -sum))
+                / (Math.pow(Math.E, sum) + Math.pow(Math.E, -sum)))*0.1;//гиперболич тангенс
+      //  return  Math.tanh(sum*0.1);
     }
 
     public double[] activation(double[] sum) { //

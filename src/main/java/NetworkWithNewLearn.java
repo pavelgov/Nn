@@ -1,5 +1,5 @@
 public class NetworkWithNewLearn extends Network {
-    private final double SPEEDLEARN = 0.01;
+    private final double SPEEDLEARN = 1;
 
     /**
      * В конструкторе задаем кол-во слоев сети без весов

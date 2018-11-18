@@ -2,11 +2,8 @@ function showGraphic() {
     // var limit = 50;
     var y = 0;
     var data = [];
-    var data1 = [];
     var dataSeries = {type: "line"};
-    var dataSeries1 = {type: "line"};
     var dataPoints = [];
-    var dataPoints1 = [];
 
     $.ajaxSetup({
         async: false //отключаем ассинхронное получение данных
@@ -54,16 +51,8 @@ function showGraphic() {
 
 
     var chart = new CanvasJS.Chart("chartContainer", options);
-   // var chart1 = new CanvasJS.Chart("chartContainer", options1);
 
     chart.render();
-  //  chart1.render();
-    y = [];
-    data = [];
-    dataSeries = {type: "line"};
-    dataPoints = [];
-    counter = 0;
-    context = null;
-    chart = null;
+
 
 }
